@@ -1,4 +1,4 @@
-"""personal URL Configuration
+"""mysite URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.1/topics/http/urls/
@@ -14,14 +14,9 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import *
-from personal.restview import MyRESTView
-"""
+from django.urls import path, include
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-]
-"""
-urlpatterns = [
-    # this URL passes resource_id in **kw to MyRESTView
-    path(r'api/compute', MyRESTView.as_view(), name='my_rest_view'),
+    path('', include('render.urls')),
 ]
